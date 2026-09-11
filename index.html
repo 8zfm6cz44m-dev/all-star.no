@@ -74,11 +74,11 @@
   --navy-soft:#14295C;
   --gold:#E2AA44;
   --gold-soft:#F1D39A;
-  --paper:#FFFFFF;
-  --mist:#F2F4F8;
-  --ink:#0E1A33;
-  --muted:#4A5670;
-  --line:#DCE1EA;
+  --paper:#00184B;
+  --mist:#00184B;
+  --ink:#EEF1F7;
+  --muted:#B9C3D8;
+  --line:rgba(255,255,255,.12);
   --serif:"Cormorant Garamond", Georgia, "Times New Roman", serif;
   --sans:"Manrope", "Segoe UI", Helvetica, Arial, sans-serif;
   --wrap:1180px;
@@ -137,7 +137,7 @@ p{margin:0 0 1em}
 .hero-photo::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,var(--navy) 0%,rgba(0,24,75,0) 28%)}
 
 /* ---------- testimonials ---------- */
-.voices{background:var(--navy-deep);color:#fff;padding:110px 0 100px;position:relative}
+.voices{background:var(--navy);color:#fff;padding:110px 0 100px;position:relative}
 .voices-head{display:grid;grid-template-columns:1fr auto;align-items:end;gap:24px;margin-bottom:56px}
 .voices-head p{color:#B9C3D8;max-width:52ch;margin:14px 0 0}
 .voices h2{color:#fff}
@@ -148,7 +148,7 @@ p{margin:0 0 1em}
 .feature blockquote p{font-family:var(--serif);font-size:clamp(25px,2.6vw,33px);line-height:1.32;color:#fff;font-weight:500}
 .who{display:flex;align-items:center;gap:16px;margin-top:22px}
 .who img{width:56px;height:56px;border-radius:50%;object-fit:cover;background:#fff}
-.who .logo{border-radius:8px;object-fit:contain;padding:4px}
+.who .logo{border-radius:0;object-fit:contain;padding:0;background:transparent}
 .who b{display:block;color:var(--gold);font-weight:700;font-size:16px}
 .who span{color:#AFBAD1;font-size:14.5px}
 .quotes{columns:3 320px;column-gap:28px}
@@ -156,65 +156,81 @@ p{margin:0 0 1em}
 .quote p{color:#E4E8F1;font-size:16px;line-height:1.7;margin:0}
 .quote .who{margin-top:22px;padding-top:18px;border-top:1px solid rgba(255,255,255,.1)}
 .quote .who img{width:46px;height:46px}
-.who img.wide,.quote .who img.wide{width:96px;height:46px;padding:6px 8px}
+.who img.wide,.quote .who img.wide{width:110px;height:40px;padding:0}
 details.more{margin-top:8px}
 details.more summary{list-style:none;cursor:pointer;display:inline-flex;align-items:center;gap:10px;color:var(--gold);font-weight:700;border:1.5px solid var(--gold);border-radius:44px;padding:14px 26px}
 details.more summary::-webkit-details-marker{display:none}
 details.more summary:hover{background:rgba(226,170,68,.1)}
 details.more[open] summary .open-txt,details.more:not([open]) summary .close-txt{display:none}
 details.more[open] summary{margin-bottom:28px}
-.logos{display:flex;flex-wrap:wrap;align-items:center;gap:18px 26px;margin-top:64px;padding-top:34px;border-top:1px solid rgba(255,255,255,.1)}
-.logos span{color:#AFBAD1;font-size:14.5px;margin-right:6px}
-.logos img{height:46px;width:auto;background:#fff;border-radius:4px;padding:6px 10px;object-fit:contain}
+.lg-t{filter:grayscale(1) brightness(1.7)}
+.lg-dark{filter:grayscale(1) contrast(1.6) brightness(1.1);mix-blend-mode:screen}
+.lg-light{filter:grayscale(1) invert(1) contrast(1.8);mix-blend-mode:screen}
+.lg-photo{filter:grayscale(1) brightness(.55) contrast(4) brightness(1.4);mix-blend-mode:screen}
+.clients{margin-top:72px;padding-top:30px;border-top:1px solid rgba(255,255,255,.1)}
+.clients-label{color:#AFBAD1;font-size:14.5px;margin:0 0 22px}
+.marquee{overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.marquee-track{display:flex;width:max-content;background:var(--navy);animation:marquee 32s linear infinite}
+.marquee:hover .marquee-track{animation-play-state:paused}
+.marquee ul{display:flex;align-items:center;gap:64px;margin:0;padding:0 32px;list-style:none}
+.marquee li{flex:none;height:76px;display:flex;align-items:center}
+.marquee img{height:64px;width:auto;max-width:170px;object-fit:contain;opacity:.85;transition:opacity .2s}
+.marquee li:hover img{opacity:1}
+.marquee img.sz-s{height:52px}
+.marquee img.sz-l{height:84px;max-width:190px}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){.marquee-track{animation:none;flex-wrap:wrap}.marquee ul[aria-hidden]{display:none}.marquee{-webkit-mask-image:none;mask-image:none}}
+@media (max-width:560px){.marquee img{height:46px;max-width:130px}.marquee img.sz-s{height:38px}.marquee img.sz-l{height:60px;max-width:140px}.marquee li{height:60px}.marquee ul{gap:40px;padding:0 20px}}
 
 /* ---------- services ---------- */
-.section{padding:108px 0}
+.section{padding:108px 0;border-top:1px solid rgba(226,170,68,.18)}
+.voices{border-top:1px solid rgba(226,170,68,.18)}
 .intro{max-width:60ch;margin-bottom:56px}
 .intro p{color:var(--muted);font-size:18px;margin-top:16px}
 .services{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0;border-top:1px solid var(--line)}
 .svc{padding:38px 40px 36px 0;border-bottom:1px solid var(--line)}
 .svc:nth-child(even){padding:38px 0 36px 40px;border-left:1px solid var(--line)}
-.svc h3{color:var(--navy);margin-bottom:12px}
+.svc h3{color:#fff;margin-bottom:12px}
 .svc p{color:var(--muted);margin:0}
 .svc ul{margin:14px 0 0;padding:0;list-style:none;display:flex;flex-wrap:wrap;gap:8px}
-.svc li{font-size:13.5px;font-weight:600;color:var(--navy);background:var(--mist);padding:5px 12px;border-radius:30px}
+.svc li{font-size:13.5px;font-weight:600;color:#E6EAF3;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);padding:5px 12px;border-radius:30px}
 
 /* ---------- process ---------- */
 .process{background:var(--mist)}
 .steps{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:26px;counter-reset:s;margin:0;padding:0;list-style:none}
 .steps li{counter-increment:s;position:relative;padding-top:64px}
-.steps li::before{content:counter(s);position:absolute;top:0;left:0;width:46px;height:46px;border-radius:50%;background:var(--navy);color:var(--gold);font-family:var(--serif);font-size:24px;font-weight:600;display:grid;place-items:center}
-.steps li::after{content:"";position:absolute;top:23px;left:58px;right:-14px;height:1px;background:#C3CBDA}
+.steps li::before{content:counter(s);position:absolute;top:0;left:0;width:46px;height:46px;border-radius:50%;background:transparent;border:1.5px solid var(--gold);color:var(--gold);font-family:var(--serif);font-size:24px;font-weight:600;display:grid;place-items:center}
+.steps li::after{content:"";position:absolute;top:23px;left:58px;right:-14px;height:1px;background:rgba(255,255,255,.18)}
 .steps li:last-child::after{display:none}
-.steps h3{font-size:22px;color:var(--navy);margin-bottom:8px}
+.steps h3{font-size:22px;color:#fff;margin-bottom:8px}
 .steps p{font-size:15.5px;color:var(--muted);margin:0}
 .promise{margin-top:64px;display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:48px;align-items:center}
-.promise blockquote{margin:0;font-family:var(--serif);font-size:clamp(28px,3vw,38px);line-height:1.25;color:var(--navy);font-weight:500}
+.promise blockquote{margin:0;font-family:var(--serif);font-size:clamp(28px,3vw,38px);line-height:1.25;color:#fff;font-weight:500}
 .promise cite{display:block;margin-top:14px;font-family:var(--sans);font-style:normal;font-size:15px;color:var(--muted)}
 .promise p{color:var(--muted);margin:0}
 
 /* ---------- about ---------- */
 .about-grid{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:72px;align-items:center}
-.about-photo{position:relative}
+.about-photo{position:relative;isolation:isolate}
 .about-photo img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:50% 18%;border-radius:4px}
 .about-photo::after{content:"";position:absolute;inset:18px -18px -18px 18px;border:1.5px solid var(--gold);border-radius:4px;z-index:-1}
-.about h2{color:var(--navy);margin-bottom:22px}
+.about h2{color:#fff;margin-bottom:22px}
 .about p{color:var(--muted)}
 .facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;margin-top:34px;padding-top:30px;border-top:1px solid var(--line)}
-.facts strong{display:block;font-family:var(--serif);font-size:40px;color:var(--navy);line-height:1}
+.facts strong{display:block;font-family:var(--serif);font-size:40px;color:var(--gold);line-height:1}
 .facts span{font-size:14.5px;color:var(--muted);line-height:1.4;display:block;margin-top:6px}
 
 /* ---------- faq ---------- */
 .faq{background:var(--mist)}
 .faq-grid{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:64px}
-.faq h2{color:var(--navy)}
-.faq-list details{border-bottom:1px solid #CDD4E1;padding:4px 0}
-.faq-list summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:20px;padding:22px 0;font-weight:700;font-size:18px;color:var(--navy)}
+.faq h2{color:#fff}
+.faq-list details{border-bottom:1px solid rgba(255,255,255,.14);padding:4px 0}
+.faq-list summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:20px;padding:22px 0;font-weight:700;font-size:18px;color:#fff}
 .faq-list summary::-webkit-details-marker{display:none}
 .faq-list summary::after{content:"+";font-family:var(--serif);font-size:30px;line-height:.8;color:var(--gold);transition:transform .2s}
 .faq-list details[open] summary::after{transform:rotate(45deg)}
 .faq-list details p{color:var(--muted);margin:0 0 22px;max-width:62ch}
-.fill{background:#FFF4DC;border:1px dashed #C98A00;color:#6B4A00;padding:2px 6px;border-radius:3px;font-size:15px}
+.fill{background:rgba(226,170,68,.1);border:1px dashed var(--gold);color:var(--gold-soft);padding:2px 6px;border-radius:3px;font-size:15px}
 
 /* ---------- contact ---------- */
 .contact{background:var(--navy);color:#fff}
@@ -227,18 +243,19 @@ details.more[open] summary{margin-bottom:28px}
 .ways a,.ways span{font-size:20px;font-weight:600;color:#fff;text-decoration:none}
 .ways a:hover{color:var(--gold)}
 .ways .hours{font-size:16px;font-weight:500;line-height:1.6}
-form{background:#fff;color:var(--ink);padding:40px;border-radius:4px}
-form h3{color:var(--navy);margin-bottom:22px}
+form{background:var(--navy-soft);border:1px solid rgba(255,255,255,.1);color:var(--ink);padding:40px;border-radius:4px}
+form h3{color:#fff;margin-bottom:22px}
 .field{margin-bottom:16px}
-.field label{display:block;font-size:14px;font-weight:700;color:var(--navy);margin-bottom:6px}
-.field input,.field textarea,.field select{width:100%;font:inherit;font-size:16px;padding:13px 14px;border:1.5px solid #C8D0DE;border-radius:4px;background:#fff;color:var(--ink)}
-.field input:focus,.field textarea:focus,.field select:focus{border-color:var(--navy);outline:none}
+.field label{display:block;font-size:14px;font-weight:700;color:#D5DCEA;margin-bottom:6px}
+.field input,.field textarea,.field select{width:100%;font:inherit;font-size:16px;padding:13px 14px;border:1.5px solid rgba(255,255,255,.22);border-radius:4px;background:rgba(255,255,255,.06);color:#fff}
+.field select option{color:#0E1A33;background:#fff}
+.field input:focus,.field textarea:focus,.field select:focus{border-color:var(--gold);outline:none}
 .row2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 form .btn{width:100%;border:0;cursor:pointer;margin-top:6px;font-family:inherit}
 form small{display:block;color:var(--muted);font-size:13px;margin-top:12px}
 
 /* ---------- footer ---------- */
-footer{background:var(--navy-deep);color:#9FAAC4;font-size:14.5px;padding:48px 0}
+footer{background:var(--navy);border-top:1px solid rgba(226,170,68,.22);color:#9FAAC4;font-size:14.5px;padding:48px 0}
 .foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:28px;align-items:flex-start}
 footer a{color:#D7DDEA;text-decoration:none}
 footer a:hover{color:var(--gold)}
@@ -349,7 +366,7 @@ footer a:hover{color:var(--gold)}
           <p>Fasiten så langt etter et halvt år er et sekssifret beløp i besparelse, to nye biler og enorme mengder tid og bekymringer spart.</p>
         </blockquote>
         <figcaption class="who">
-          <img class="logo" src="https://all-star.no/wp-content/uploads/2023/04/Bilde-22.11.2023-klokken-10.34.jpeg" alt="Stavern Elektro logo" width="56" height="56" loading="lazy">
+          <img class="logo wide lg-dark" src="https://all-star.no/wp-content/uploads/2023/04/Bilde-22.11.2023-klokken-10.34.jpeg" alt="Stavern Elektro logo" width="56" height="56" loading="lazy">
           <div><b>Stavern Elektro AS</b><span>Elektromontørbedrift – bilpark</span></div>
         </figcaption>
       </div>
@@ -358,11 +375,11 @@ footer a:hover{color:var(--gold)}
     <div class="quotes">
       <figure class="quote">
         <p>Eric og All-Star Company bisto oss nylig ved salg av firmabil og gjennomgang av forsikringsavtaler på bilparken. Vi er strålende fornøyd med leveransen! […] Vi har blitt godt ivaretatt gjennom hele prosessen, med god informasjon underveis – samtidig som vi kunne senke skuldrene og fokusere på driften vår. De håndterte alt fra A-til-Å på eksemplarisk vis. Resultatet ble både salg av bil til en pris vi er fornøyd med og betydelige besparelser på forsikring av bilparken! Anbefales!</p>
-        <figcaption class="who"><img class="logo" src="https://all-star.no/wp-content/uploads/2023/06/UTD.jpg" alt="UTD Reklameprodusenten logo" width="46" height="46" loading="lazy"><div><b>Stian Rød</b><span>Daglig leder, UTD Reklameprodusenten AS</span></div></figcaption>
+        <figcaption class="who"><img class="logo wide lg-dark" src="https://all-star.no/wp-content/uploads/2023/06/UTD.jpg" alt="UTD Reklameprodusenten logo" width="46" height="46" loading="lazy"><div><b>Stian Rød</b><span>Daglig leder, UTD Reklameprodusenten AS</span></div></figcaption>
       </figure>
       <figure class="quote">
         <p>Første bilen kjøpte jeg av Eric for 15 år siden […] Bestilte nye biler for kort siden via Eric og han sparte over 100 000kr for meg da jeg rett og slett ikke klarte å få has på selgere når jeg prøvde i markedet selv. Det er naivt å tro at man klarer dette bedre enn Mr. Lomme, det er da naturlig å la han gjøre jobben.</p>
-        <figcaption class="who"><img class="logo wide" src="https://all-star.no/wp-content/uploads/2024/02/cropped-LOGO-3-e1708447273985.png" alt="Storm-Kulde logo" width="96" height="46" loading="lazy"><div><b>Tor Arne Nicolaisen</b><span>Firmakunde, Storm-Kulde AS</span></div></figcaption>
+        <figcaption class="who"><img class="logo wide lg-t" src="https://all-star.no/wp-content/uploads/2024/02/cropped-LOGO-3-e1708447273985.png" alt="Storm-Kulde logo" width="96" height="46" loading="lazy"><div><b>Tor Arne Nicolaisen</b><span>Firmakunde, Storm-Kulde AS</span></div></figcaption>
       </figure>
       <figure class="quote">
         <p>For en opplevelse dette var! Ikke bare sparte jeg masse penger men hele prosessen har vært en lek. Jeg engasjerte All-Star på mandag ettermiddag når jeg selv var på en jobbreise. Da jeg landet torsdag samme uke stod bilen klar og Eric hadde ordnet alt. Jeg følte meg så ekstremt godt ivaretatt igjennom hele prosessen. Dette er måten jeg skal handle bil på i fremtiden også!</p>
@@ -370,7 +387,7 @@ footer a:hover{color:var(--gold)}
       </figure>
       <figure class="quote">
         <p>Service i verdensklasse! Makan til service finnes ikke i bilbransjen! Har handlet mine siste tre privat biler av Eric, samt rundt 10 firmabiler, og det er alltid en trygg og hyggelig opplevelse! Anbefales på det sterkeste!</p>
-        <figcaption class="who"><img class="logo" src="https://all-star.no/wp-content/uploads/2023/06/Saneringsteknikk1-kopi.jpg" alt="Saneringsteknikk logo" width="46" height="46" loading="lazy"><div><b>Robin Nordkvelde</b><span>Daglig leder, Saneringsteknikk AS</span></div></figcaption>
+        <figcaption class="who"><img class="logo lg-light" src="https://all-star.no/wp-content/uploads/2023/06/Saneringsteknikk1-kopi.jpg" alt="Saneringsteknikk logo" width="46" height="46" loading="lazy"><div><b>Robin Nordkvelde</b><span>Daglig leder, Saneringsteknikk AS</span></div></figcaption>
       </figure>
       <figure class="quote">
         <p>Fantastisk oppfølging og service! Eric har lang og omfattende erfaring fra bransjen. Som kunde føler du deg ivaretatt gjennom gode råd, tett oppfølging og fantastisk service. I tillegg sparer man mye tid på prosessen.</p>
@@ -403,19 +420,19 @@ footer a:hover{color:var(--gold)}
         </figure>
         <figure class="quote">
           <p>Etter å ha hørt om Eric og All-Star sine tjenester fra en bransjekollega, tok vi kontakt med de for å forstå konseptet og tjenestene ytterligere. Vi endte raskt opp med å ønske han velkommen til å hjelpe oss med håndtering av vår bilpark og fremtidige bilbehov! […] Erics unike bransjeerfaring og nettverk gjør det svært trygt for oss slik at vi kan fokusere på driften vår mens han håndterer alt fra A-Å innen bil. Vi gir en sterk anbefaling!</p>
-          <figcaption class="who"><img class="logo" src="https://all-star.no/wp-content/uploads/2023/04/Bilde-22.11.2023-klokken-10.34.jpeg" alt="Stavern Elektro logo" width="46" height="46" loading="lazy"><div><b>Stavern Elektro AS</b><span>Elektromontørbedrift</span></div></figcaption>
+          <figcaption class="who"><img class="logo wide lg-dark" src="https://all-star.no/wp-content/uploads/2023/04/Bilde-22.11.2023-klokken-10.34.jpeg" alt="Stavern Elektro logo" width="46" height="46" loading="lazy"><div><b>Stavern Elektro AS</b><span>Elektromontørbedrift</span></div></figcaption>
         </figure>
       </div>
     </details>
 
-    <div class="logos" aria-label="Utvalgte bedriftskunder">
-      <span>Bedrifter som bruker oss:</span>
-      <img src="https://all-star.no/wp-content/uploads/2023/06/Stavern-Elektro.png" alt="Stavern Elektro" loading="lazy">
-      <img src="https://all-star.no/wp-content/uploads/2023/06/Saneringsteknikk-1.jpg" alt="Saneringsteknikk" loading="lazy">
-      <img src="https://all-star.no/wp-content/uploads/2023/06/UTD.jpg" alt="UTD Reklameprodusenten" loading="lazy">
-      <img src="https://all-star.no/wp-content/uploads/2024/02/cropped-LOGO-3-e1708447273985.png" alt="Storm-Kulde" loading="lazy">
-      <img src="https://all-star.no/wp-content/uploads/2023/06/Bakke-Gard-resize.jpg" alt="Bakke Gård" loading="lazy">
-      <img src="https://all-star.no/wp-content/uploads/2023/11/reis_plain-200x81-1.png" alt="Bedriftskunde" loading="lazy">
+    <div class="clients">
+      <p class="clients-label">Bedrifter som bruker oss</p>
+      <div class="marquee">
+        <div class="marquee-track">
+          <ul><li><img class="lg-t" src="https://all-star.no/wp-content/uploads/2023/06/Stavern-Elektro.png" alt="Stavern Elektro" loading="lazy"></li><li><img class="lg-t sz-s" src="https://all-star.no/wp-content/uploads/2023/11/reis_plain-200x81-1.png" alt="Reis" loading="lazy"></li><li><img class="lg-photo sz-l" src="https://all-star.no/wp-content/uploads/2023/06/Bakke-Gard-resize.jpg" alt="Bakke Gård" loading="lazy"></li><li><img class="lg-dark sz-l" src="https://all-star.no/wp-content/uploads/2023/06/Saneringsteknikk-1.jpg" alt="Saneringsteknikk" loading="lazy"></li><li><img class="lg-dark" src="https://all-star.no/wp-content/uploads/2023/06/UTD.jpg" alt="UTD Reklameprodusenten" loading="lazy"></li><li><img class="lg-t" src="https://all-star.no/wp-content/uploads/2024/02/cropped-LOGO-3-e1708447273985.png" alt="Storm-Kulde" loading="lazy"></li></ul>
+          <ul aria-hidden="true"><li><img class="lg-t" src="https://all-star.no/wp-content/uploads/2023/06/Stavern-Elektro.png" alt="" loading="lazy"></li><li><img class="lg-t sz-s" src="https://all-star.no/wp-content/uploads/2023/11/reis_plain-200x81-1.png" alt="" loading="lazy"></li><li><img class="lg-photo sz-l" src="https://all-star.no/wp-content/uploads/2023/06/Bakke-Gard-resize.jpg" alt="" loading="lazy"></li><li><img class="lg-dark sz-l" src="https://all-star.no/wp-content/uploads/2023/06/Saneringsteknikk-1.jpg" alt="" loading="lazy"></li><li><img class="lg-dark" src="https://all-star.no/wp-content/uploads/2023/06/UTD.jpg" alt="" loading="lazy"></li><li><img class="lg-t" src="https://all-star.no/wp-content/uploads/2024/02/cropped-LOGO-3-e1708447273985.png" alt="" loading="lazy"></li></ul>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -493,7 +510,7 @@ footer a:hover{color:var(--gold)}
   <div class="wrap faq-grid">
     <div>
       <h2 id="faq-title">Vanlige spørsmål</h2>
-      <p style="color:var(--muted);margin-top:16px">Finner du ikke svaret? Ring oss på <a href="tel:+4791754507">917 54 507</a>.</p>
+      <p style="color:var(--muted);margin-top:16px">Finner du ikke svaret? Ring oss på <a href="tel:+4791754507" style="color:var(--gold)">917 54 507</a>.</p>
     </div>
     <div class="faq-list">
       <details>

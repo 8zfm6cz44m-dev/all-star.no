@@ -359,15 +359,15 @@ footer a:hover{color:var(--gold)}
       <div class="count">11 kunder forteller</div>
     </div>
 
-    <figure class="feature">
+    <figure class="feature" id="utvalgt">
       <div class="qmark" aria-hidden="true">&ldquo;</div>
       <div>
         <blockquote>
-          <p>Fasiten så langt etter et halvt år er et sekssifret beløp i besparelse, to nye biler og enorme mengder tid og bekymringer spart.</p>
+          <p id="fq-text">Fasiten så langt etter et halvt år er et sekssifret beløp i besparelse, to nye biler og enorme mengder tid og bekymringer spart.</p>
         </blockquote>
         <figcaption class="who">
-          <img class="logo wide lg-dark" src="https://all-star.no/wp-content/uploads/2023/04/Bilde-22.11.2023-klokken-10.34.jpeg" alt="Stavern Elektro logo" width="56" height="56" loading="lazy">
-          <div><b>Stavern Elektro AS</b><span>Elektromontørbedrift – bilpark</span></div>
+          <img id="fq-img" class="logo wide lg-dark" src="https://all-star.no/wp-content/uploads/2023/04/Bilde-22.11.2023-klokken-10.34.jpeg" alt="Stavern Elektro logo" width="110" height="40">
+          <div><b id="fq-name">Stavern Elektro AS</b><span id="fq-role">Elektromontørbedrift – bilpark</span></div>
         </figcaption>
       </div>
     </figure>
@@ -593,6 +593,23 @@ footer a:hover{color:var(--gold)}
   </div>
 </footer>
 
+<script>
+/* Utvalgt kundesitat: ett av fem ordrette utdrag vises tilfeldig ved hver sidelasting */
+(function(){
+  var U='https://all-star.no/wp-content/uploads/';
+  var Q=[
+    {t:'Fasiten så langt etter et halvt år er et sekssifret beløp i besparelse, to nye biler og enorme mengder tid og bekymringer spart.',img:'2023/04/Bilde-22.11.2023-klokken-10.34.jpeg',c:'logo wide lg-dark',alt:'Stavern Elektro logo',n:'Stavern Elektro AS',r:'Elektromontørbedrift – bilpark'},
+    {t:'Bestilte nye biler for kort siden via Eric og han sparte over 100 000kr for meg da jeg rett og slett ikke klarte å få has på selgere når jeg prøvde i markedet selv.',img:'2024/02/cropped-LOGO-3-e1708447273985.png',c:'logo wide lg-t',alt:'Storm-Kulde logo',n:'Tor Arne Nicolaisen',r:'Firmakunde, Storm-Kulde AS'},
+    {t:'Resultatet ble både salg av bil til en pris vi er fornøyd med og betydelige besparelser på forsikring av bilparken!',img:'2023/06/UTD.jpg',c:'logo wide lg-dark',alt:'UTD Reklameprodusenten logo',n:'Stian Rød',r:'Daglig leder, UTD Reklameprodusenten AS'},
+    {t:'Jeg engasjerte All-Star på mandag ettermiddag når jeg selv var på en jobbreise. Da jeg landet torsdag samme uke stod bilen klar og Eric hadde ordnet alt.',img:'2023/04/317265421_10167050530700445_2949618156848471507_n-e1700647564781.jpg',c:'',alt:'Carl Henrik Myhre',n:'Carl Henrik Myhre',r:'Gründer, Layers AS'},
+    {t:'Har handlet mine siste tre privat biler av Eric, samt rundt 10 firmabiler, og det er alltid en trygg og hyggelig opplevelse!',img:'2023/06/Saneringsteknikk1-kopi.jpg',c:'logo lg-light',alt:'Saneringsteknikk logo',n:'Robin Nordkvelde',r:'Daglig leder, Saneringsteknikk AS'}
+  ];
+  var q=Q[Math.floor(Math.random()*Q.length)];
+  var t=document.getElementById('fq-text'), im=document.getElementById('fq-img'), n=document.getElementById('fq-name'), r=document.getElementById('fq-role');
+  if(!t||!im||!n||!r) return;
+  t.textContent=q.t; im.src=U+q.img; im.className=q.c; im.alt=q.alt; n.textContent=q.n; r.textContent=q.r;
+})();
+</script>
 <script>
 (function(){
   var body=document.body, btn=document.querySelector('.burger'), nav=document.getElementById('meny');
